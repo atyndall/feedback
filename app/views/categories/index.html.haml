@@ -1,0 +1,31 @@
+%h1 Listing categories
+
+%p A category is a way of grouping feedback together.
+%p Usually a category is created for a specific event that the ResClub runs, so that feedback relating to that event specifically can be analyzed.
+%p Each category has an associated URL, which can be used by the ResClub to link to that specific feedback form.
+
+%table.pure-table
+  %thead
+    %tr
+      %th Name
+      %th URL
+      %th Ask for rating
+      %th Ask for details
+      %th
+      %th
+      %th
+
+  - @categories.each do |category|
+    %tr
+      %td= category.name
+      %td= link_to "#{@_request.host_with_port}/on/#{category.urlname}", "http://#{@_request.host_with_port}/on/#{category.urlname}"
+      %td= category.get_rating
+      %td= category.get_details
+      %td= link_to 'Show', category
+      %td= link_to 'Edit', edit_category_path(category)
+      %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Deleting a category will delete all feedback associated with it. Are you sure?' }
+
+%br
+
+= link_to 'New Category', new_category_path
+= link_to 'Back', adminindex_path

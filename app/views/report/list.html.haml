@@ -1,0 +1,12 @@
+%h1 Reports
+
+%p A report is available for each category of responses.
+%p Please select a category:
+
+%ul
+  - @categories.each do |category|
+    %li
+      = link_to category.name, report_path(category.id)
+
+
+= link_to 'Back', adminindex_path

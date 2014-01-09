@@ -1,0 +1,81 @@
+#container
+
+  %h3#intro
+    As volunteers, we're always looking for ways to improve, so why don't you
+
+  %h1#header1 Let us know what you think
+
+  - if @response.category.nil?
+    %h2 about...
+
+    - @categories.each do |cat|
+      %p
+        = link_to cat.name, new_response_path(cat.urlname), class: 'pure-button'
+
+  - else
+
+    = form_for @response, html: {class: 'pure-form'} do |f|
+
+      %fieldset
+
+        %h2#header2
+          about
+          = @response.category.name
+          = f.hidden_field :category_id
+
+        - if @response.errors.any?
+          .pure-u#error_explanation
+            %h3= "Sorry, we found #{pluralize(@response.errors.count, "problem")} with your response:"
+            %ul
+              - @response.errors.full_messages.each do |msg|
+                %li= msg
+
+        - if @response.category.get_rating?
+          %h3.qtxt
+            I thought it was...
+          #rating.boxspace
+            = f.hidden_field :rating, id: 'real_rating'
+            %a#bad.box(href='#')
+              = image_tag 'thumbsdown.png', class: 'img'
+              %p.text
+                Bad
+            %a#avg.box(href='#')
+              = image_tag 'thumbsside.png', class: 'img'
+              %p.text
+                Okay
+            %a#good.box(href='#')
+              = image_tag 'thumbsup.png', class: 'img'
+              %p.text
+                Good
+          .clear
+
+        - if @response.category.get_details? and not @response.category.get_rating?
+          %h3.qtxt
+            I thought that...
+          = f.text_area :details, id: 'details', class: 'boxspace'
+        - elsif @response.category.get_details? and @response.category.get_rating?
+          %h3.qtxt
+            That was mainly because...
+          = f.text_area :details, id: 'details', class: 'boxspace'
+
+
+
+
+        %h3.qtxt
+          And I am...
+        .field
+          %button.pure-button#anonbtn(type='button')
+            submitting anonymously
+          = f.hidden_field :anon
+
+      %fieldset.pure-group.details#nameemail
+        %h3
+          or my or details are...
+        = f.text_field :name, placeholder: 'Name'
+        = f.text_field :email, placeholder: 'Email'
+
+      %hr
+
+      %fieldset
+        .actions
+          = f.submit 'Let us know', class: 'pure-button pure-button-primary'

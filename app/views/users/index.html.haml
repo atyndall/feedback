@@ -1,0 +1,24 @@
+%h1 Listing administrative users
+
+%table.pure-table
+  %thead
+    %tr
+      %th Name
+      %th Username
+      %th Can edit users
+      %th
+      %th
+
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.username
+      %td= user.can_edit_users?
+      %td= link_to 'Edit', edit_user_path(user)
+      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New User', new_user_path
+= link_to 'Back', adminindex_path
+

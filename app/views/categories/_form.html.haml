@@ -1,0 +1,38 @@
+= form_for @category, html: {class: 'pure-form pure-form-aligned'} do |f|
+  - if @category.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
+      %ul
+        - @category.errors.full_messages.each do |msg|
+          %li= msg
+
+  %fieldset
+    .pure-control-group
+      .field
+        = f.label :name
+        = f.text_field :name
+
+    .pure-control-group
+      .field
+        = f.label 'Short URL'
+        = "#{@_request.host_with_port}/on/"
+        = f.text_field :urlname
+
+    .pure-control-group
+      .field
+        %label Ask for rating
+        = f.check_box :get_rating
+
+    .pure-control-group
+      .field
+        %label Ask for details
+        = f.check_box :get_details
+
+    .pure-control-group
+      .field
+        = f.label :destinations
+        = f.text_field :destinations
+
+    .pure-controls
+      .actions
+        = f.submit 'Save', class: 'pure-button pure-button-primary'

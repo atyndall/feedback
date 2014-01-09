@@ -1,0 +1,80 @@
+%h1 Report
+%h2
+  on
+  = @category.name
+
+%p
+  Number of responses:
+  = @responses.count
+
+%p
+  Asked for ratings?
+  = @category.get_rating?
+
+%p
+  Asked for details?
+  = @category.get_details?
+
+- if @category.get_rating?
+  %h3 Ratings Overview
+  %table.pure-table
+    %thead
+      %tr
+        %td
+        %td Bad
+        %td Okay
+        %td Good
+
+    %tr
+      %td #
+      %td= @badc
+      %td= @avgc
+      %td= @godc
+
+
+    %tr
+      %td %
+      - if @count > 0
+        %td= (@badc.to_f / @count * 100.0).round
+        %td= (@avgc.to_f / @count * 100.0).round
+        %td= (@godc.to_f / @count * 100.0).round
+      - else
+        %td 0
+        %td 0
+        %td 0
+
+  - if @count > 0
+    .pie
+      = statpie
+
+- if @category.get_details?
+  %h3 Individual feedback
+
+  - [['Bad', -1], ['Okay', 0], ['Good', 1]].each do |name, v|
+    %h4=name
+    - if @responses.where(rating: v).count == 0
+      %p.rresp No submissions
+    - else
+      %hr.rresp
+      - @responses.where(rating: v).each do |r|
+        - unless r.details.empty?
+          .rresp
+            %p
+              Submitted:
+              = r.created_at
+            %p
+              Name:
+              - if r.name.empty?
+                Not Provided
+              - else
+                = r.name
+            %p
+              Email:
+              - if r.email.empty?
+                Not Provided
+              - else
+                = r.email
+            %p.info= r.details
+            %hr
+
+= link_to 'Back', reports_path

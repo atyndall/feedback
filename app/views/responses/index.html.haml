@@ -1,0 +1,49 @@
+%h1 Listing responses
+
+%p A response is submitted by the user. Each response will have an associated rating, and possible some text information.
+%p Responses are linked to categories.
+
+%table.pure-table
+  %thead
+    %tr
+      %th Category
+      %th Name
+      %th Email
+      %th Rating
+      %th Created at
+      %th
+      %th
+
+  - @responses.each do |response|
+    %tr
+      %td
+        - unless response.category.nil?
+          = response.category.name
+      %td
+        - if response.name.empty?
+          %i None
+        - else
+          = response.name
+      %td
+        - if response.email.empty?
+          %i None
+        - else
+          = response.email
+      %td
+        - case response.rating
+        - when -1
+          Bad
+        - when 0
+          Okay
+        - when 1
+          Good
+      %td
+        = response.created_at
+      %td= link_to 'Show', response
+      %td= link_to 'Destroy', response, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Response', root_path
+= link_to 'Back', adminindex_path
+

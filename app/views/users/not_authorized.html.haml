@@ -1,0 +1,16 @@
+%h1 Access Denied
+
+%p
+  The user
+  %b
+    = @current_user.name
+  is not permitted to edit administrative user information
+%p
+  The following users can, why not contact one of them?
+  %ul
+    - @allowed_users.each do |u|
+      %li
+        = u.name
+        = "(#{u.username})"
+%p
+  You can logout as the current user by closing your browser window.

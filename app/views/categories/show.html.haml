@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @category.name
+%p
+  %b Urlname:
+  = "#{@_request.host_with_port}/on/#{@category.urlname}"
+%p
+  %b Ask for rating:
+  = @category.get_rating
+%p
+  %b Ask for details:
+  = @category.get_details
+%p
+  %b Destinations:
+  = @category.destinations
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path

@@ -1,0 +1,37 @@
+%p#notice= notice
+
+%p
+  %b Category:
+  = @response.category.name
+%p
+  %b Name:
+  - if @response.name.empty?
+    %i None
+  - else
+    = @response.name
+%p
+  %b Email:
+  - if @response.email.empty?
+    %i None
+  - else
+    = @response.email
+%p
+  %b Created at:
+  = @response.created_at
+%p
+  %b Rating:
+  - case @response.rating
+  - when -1
+    Bad
+  - when 0
+    Okay
+  - when 1
+    Good
+%p
+  %b Details:
+  %br
+  = @response.details
+
+
+= link_to 'Destroy', @response, :method => :delete, :data => { :confirm => 'Are you sure?' }
+= link_to 'Back', responses_path
