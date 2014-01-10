@@ -26,6 +26,15 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
   * {
     font-family: 'Lato', sans-serif !important;
+
+    // Prevent the touch terribleness
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
   }
 
   #header1 {
@@ -77,6 +86,13 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
   textarea {
     width: 100%;
+
+    -webkit-touch-callout:default;
+    -webkit-user-select:all;
+    -khtml-user-select:all;
+    -moz-user-select:all;
+    -ms-user-select:all;
+    user-select:all;
   }
 
   #rating {
