@@ -103,7 +103,7 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
     .box {
       display: inline;
       float: left;
-      width: 33.33%;
+      width: 33%;
       height: 100%;
       text-decoration: none;
 
@@ -159,6 +159,7 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
     }
 
     #avg {
+      width: 34%;
       background-color: $lyellow;
 
       .img {
