@@ -100,11 +100,18 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
     cursor: pointer;
     overflow: hidden;
 
+    background-color: $lyellow;
+
     .box {
       display: inline;
       float: left;
+
+      // Magical width hacks
       width: 33%;
+      width: -webkit-calc(100% / 3) !important;
+      width: -moz-calc(100% / 3) !important;
       width: calc(100% / 3) !important;
+
       height: 100%;
       text-decoration: none;
 
