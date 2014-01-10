@@ -55,7 +55,7 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
   #nameemail {
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 80%;
   }
 
   #nameemail input {
@@ -72,6 +72,7 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
   textarea {
     width: 100%;
+    font-size: 12pt;
   }
 
   #rating {
@@ -185,6 +186,10 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
       background-color: $dgreen;
     }
 
+  }
+
+  input, button {
+    font-size: 12pt;
   }
 
 
