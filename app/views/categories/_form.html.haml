@@ -14,24 +14,24 @@
 
     .pure-control-group
       .field
-        = f.label 'Short URL'
+        = f.label :urlname
         = "#{@_request.host_with_port}/on/"
         = f.text_field :urlname
 
     .pure-control-group
       .field
-        %label Ask for rating
+        = f.label :get_rating
         = f.check_box :get_rating
 
     .pure-control-group
       .field
-        %label Ask for details
+        = f.label :get_details
         = f.check_box :get_details
 
-    .pure-control-group
-      .field
-        = f.label :destinations
-        = f.text_field :destinations
+    //.pure-control-group
+    //  .field
+    //    = f.label :destinations
+    //    = f.text_field :destinations
 
     .pure-controls
       .actions

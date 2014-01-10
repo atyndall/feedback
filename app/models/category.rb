@@ -4,6 +4,7 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
 
   validates :urlname, presence: true, length: {maximum: 25}, format: {with: /\A(?=.*[a-z])[a-z\d]+\Z/, message: 'must contain only lowercase letters and numbers'}
+  validates_uniqueness_of :urlname, case_sensitive: false
 
   validate :cant_disable_both
 
