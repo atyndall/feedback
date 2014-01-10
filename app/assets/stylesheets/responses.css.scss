@@ -70,9 +70,13 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
     height: 7.5em;
   }
 
+  input, button, textarea, .pure-button {
+    font-size: 12pt;
+  }
+
+
   textarea {
     width: 100%;
-    font-size: 12pt;
   }
 
   #rating {
@@ -187,11 +191,5 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
     }
 
   }
-
-  input, button {
-    font-size: 12pt;
-  }
-
-
 
 }
