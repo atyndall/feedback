@@ -86,7 +86,9 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
   textarea {
     width: 100%;
+  }
 
+  input, textarea {
     -webkit-touch-callout:default;
     -webkit-user-select:all;
     -khtml-user-select:all;
