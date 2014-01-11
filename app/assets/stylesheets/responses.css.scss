@@ -136,9 +136,6 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
       text-align: center;
 
       .img {
-        width: 28px;
-        height: 36px;
-
         opacity:0.5;
         filter:alpha(opacity=50);
       }
@@ -179,9 +176,25 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
       }
     }
 
+    #bad, #good {
+      img {
+        width: 0px;
+        height: 0px;
+
+        padding-right: 28px;
+        padding-bottom: 36px;
+
+        background-size: 28px 36px;
+      }
+    }
+
     #bad {
       background-color: $lred;
       border-right: 1px solid $border;
+
+      img {
+        background: image-url('thumbsdown.png');
+      }
     }
 
     #bad:hover, #bad:focus {
@@ -194,14 +207,21 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
     #avg {
       width: 34%;
+
       background-color: $lyellow;
 
       .img {
         margin-top: 0.4em;
         margin-bottom: 0.25em;
 
-        width: 38px;
-        height: 28px;
+        width: 0px;
+        height: 0px;
+
+        padding-right: 38px;
+        padding-bottom: 28px;
+
+        background-size: 38px 28px;
+        background: image-url('thumbsside.png');
       }
     }
 
@@ -218,6 +238,10 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
       background-color: $lgreen;
       border-left: 1px solid $border;
       float: right;
+
+      img {
+        background: image-url('thumbsup.png');
+      }
     }
 
     #good:hover, #good:focus {
@@ -226,6 +250,28 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
     #good.selected {
       background-color: $dgreen;
+    }
+
+    @media	only screen and (-webkit-min-device-pixel-ratio: 1.3),
+    only screen and (-o-min-device-pixel-ratio: 13/10),
+    only screen and (min-resolution: 120dpi)
+    {
+
+      #bad .img {
+        background: image-url('thumbsdown-md.png');
+        background-size: 28px 36px;
+      }
+
+      #good .img {
+        background: image-url('thumbsup-md.png');
+        background-size: 28px 36px;
+      }
+
+      #avg .img {
+        background: image-url('thumbsside-md.png');
+        background-size: 38px 28px;
+      }
+
     }
 
   }
