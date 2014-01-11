@@ -8,7 +8,5 @@ ready = ->
     window.open('', '_self', '')
     window.close()
 
-    e.preventDefault()
-
 $(document).ready(ready)
 $(document).on('page:load', ready)
