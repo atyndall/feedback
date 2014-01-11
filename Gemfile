@@ -31,3 +31,5 @@ gem 'rails_12factor', group: :production
 # Misc
 gem 'email_validator'
 gem 'chartkick'
+gem 'jquery-placeholder-rails'
+gem 'useragent'

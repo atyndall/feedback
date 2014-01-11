@@ -47,5 +47,7 @@ ready = ->
     $('#anonbtn').addClass('pure-button-active')
     $('.details').hide()
 
+  $('input').placeholder()
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
