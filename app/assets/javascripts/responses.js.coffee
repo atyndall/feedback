@@ -35,7 +35,6 @@ ready = ->
       $('.details').slideUp()
       $('#response_anon').val('1')
 
-
   switch $('#real_rating').val()
     when '-1'
       $('#bad').trigger('click')

@@ -79,4 +79,7 @@
 
       %fieldset
         .actions
-          = f.submit 'Let us know', class: 'pure-button pure-button-primary'
+          - if @response.errors.any?
+            = f.submit 'Try again', class: 'pure-button pure-button-primary'
+          - else
+            = f.submit 'Let us know', class: 'pure-button pure-button-primary'
