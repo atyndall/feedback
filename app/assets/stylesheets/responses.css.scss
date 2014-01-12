@@ -26,7 +26,9 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
   * {
     font-family: 'Lato', sans-serif !important;
+  }
 
+  #rating, button {
     // Prevent the touch terribleness
     -webkit-touch-callout:none;
     -webkit-user-select:none;
@@ -86,15 +88,6 @@ body#rails-misc-thanks, body#rails-responses-new, body#rails-responses-create {
 
   textarea {
     width: 100%;
-  }
-
-  input, textarea {
-    -webkit-touch-callout:default;
-    -webkit-user-select:all;
-    -khtml-user-select:all;
-    -moz-user-select:all;
-    -ms-user-select:all;
-    user-select:all;
   }
 
   #rating {
