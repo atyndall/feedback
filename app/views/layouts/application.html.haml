@@ -1,14 +1,21 @@
 !!!
 %html
   %head
+    /
+      Feedback by Ash Tyndall
+      Licensed under the GNU GPL v2
+
+      atyndall.net
+      github.com/atyndall/feedback
+
     %title Feedback
     - if controller_name == 'responses' and (action_name == 'create' or action_name == 'new') or controller_name == 'misc'
       %meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, user-scalable=0")
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-    = stylesheet_link_tag    "http://yui.yahooapis.com/pure/0.3.0/pure-min.css"
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+    = stylesheet_link_tag    "//yui.yahooapis.com/pure/0.3.0/pure-min.css"
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"
+    = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body(class="rails-#{controller_name}" id="rails-#{controller_name}-#{action_name}")
     = yield

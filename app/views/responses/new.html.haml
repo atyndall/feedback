@@ -59,7 +59,7 @@
         - if @response.category.get_details? and not @response.category.get_rating?
           %h3.qtxt
             I thought that...
-          = f.text_area :details, id: 'details', class: 'boxspace'
+          = f.text_area :details, id: 'details', class: 'boxspace', required: true
         - elsif @response.category.get_details? and @response.category.get_rating?
           %h3.qtxt
             That was mainly because...
