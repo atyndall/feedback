@@ -4,8 +4,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
 
-# Use pg/sqlite3 as the database for Active Record
-gem 'pg', group: :production
+# Use sqlite3 as the dev database
 gem 'sqlite3', group: :development
 
 # Asset pipeline
@@ -26,10 +25,16 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # For heroku
 gem 'unicorn'
-gem 'rails_12factor', group: :production
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'newrelic_rpm'
+end
 
 # Misc
 gem 'email_validator'
 gem 'chartkick'
 gem 'jquery-placeholder-rails'
 gem 'useragent'
+
