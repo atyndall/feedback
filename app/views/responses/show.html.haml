@@ -28,9 +28,14 @@
   - when 1
     Good
 %p
-  %b Details:
+  %b Liked
   %br
-  = @response.details
+  = simple_format @response.liked
+
+%p
+  %b Disliked
+  %br
+  = simple_format @response.disliked
 
 
 = link_to 'Destroy', @response, :method => :delete, :data => { :confirm => 'Are you sure?' }

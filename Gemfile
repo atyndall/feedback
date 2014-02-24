@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Core
-ruby '2.0.0'
+ruby '2.1.0'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the dev database

@@ -57,7 +57,7 @@
     - else
       %hr.rresp
       - @responses.where(rating: v).each do |r|
-        - unless r.details.empty?
+        - unless r.liked.empty? and r.disliked.empty?
           .rresp
             %p
               Submitted:
@@ -74,7 +74,14 @@
                 Not Provided
               - else
                 = r.email
-            %p.info= r.details
+            %p.info
+              %b Liked
+              %br
+              = simple_format r.liked
+            %p.info
+              %b Disliked
+              %br
+              = simple_format r.disliked
             %hr
 
 = link_to 'Back', reports_path

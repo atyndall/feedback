@@ -56,14 +56,14 @@
                 Good
           .clear
 
-        - if @response.category.get_details? and not @response.category.get_rating?
+        - if @response.category.get_details?
           %h3.qtxt
-            I thought that...
-          = f.text_area :details, id: 'details', class: 'boxspace', required: true
-        - elsif @response.category.get_details? and @response.category.get_rating?
+            I liked...
+          = f.text_area :liked, id: 'details', class: 'boxspace', required: true
+
           %h3.qtxt
-            That was mainly because...
-          = f.text_area :details, id: 'details', class: 'boxspace'
+            I disliked...
+          = f.text_area :disliked, id: 'details', class: 'boxspace', required: true
 
 
 

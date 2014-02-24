@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109062026) do
+ActiveRecord::Schema.define(version: 20140224144514) do
 
   create_table "categories", force: true do |t|
     t.string  "name",                        null: false
@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 20140109062026) do
   create_table "responses", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.text     "details"
     t.integer  "category_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rating",      default: 0, null: false
+    t.text     "liked"
+    t.text     "disliked"
   end
 
   create_table "users", force: true do |t|
