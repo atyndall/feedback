@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224144514) do
+ActiveRecord::Schema.define(version: 20141112111931) do
 
   create_table "categories", force: true do |t|
-    t.string  "name",                        null: false
-    t.string  "urlname",                     null: false
+    t.string  "name",                         null: false
+    t.string  "urlname",                      null: false
     t.text    "destinations"
-    t.boolean "get_rating",   default: true, null: false
-    t.boolean "get_details",  default: true, null: false
+    t.boolean "get_rating",   default: true,  null: false
+    t.boolean "get_details",  default: true,  null: false
+    t.boolean "disabled",     default: false
   end
 
   create_table "responses", force: true do |t|

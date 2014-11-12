@@ -7,86 +7,94 @@
       Your web browser might be too old to use our form properly. If you run into issues, please try another.
     %hr
 
-  %h3#intro
-    As volunteers, we're always looking for ways to improve, so why don't you
-
-  %h1#header1 Let us know what you think
-
   - if @response.category.nil?
-    %h2 about...
+    - cats = @categories.where(disabled: false)
+    - if cats.size > 0
+      %h3#intro
+        As volunteers, we're always looking for ways to improve, so why don't you
 
-    - @categories.each do |cat|
-      %p
-        = link_to cat.name, new_response_path(cat.urlname), class: 'pure-button'
+      %h1#header1 Let us know what you think
+
+      %h2 about...
+      - cats.each do |cat|
+        %p
+          = link_to cat.name, new_response_path(cat.urlname), class: 'pure-button'
+    - else
+      Oops, it looks like there are no categories accepting responses at the moment.
 
   - else
 
-    = form_for @response, html: {class: 'pure-form'} do |f|
+    - if @response.category.disabled
+      This category is no longer accepting responses.
+    - else
+      %h3#intro
+        As volunteers, we're always looking for ways to improve, so why don't you
 
-      %fieldset
+      %h1#header1 Let us know what you think
 
-        %h2#header2
-          about
-          = @response.category.name
-          = f.hidden_field :category_id
+      = form_for @response, html: {class: 'pure-form'} do |f|
 
-        - if @response.errors.any?
-          .pure-u#error_explanation
-            %h3= "Sorry, we found #{pluralize(@response.errors.count, "problem")} with your response:"
-            %ul
-              - @response.errors.full_messages.each do |msg|
-                %li= msg
+        %fieldset
 
-        - if @response.category.get_rating?
-          %h3.qtxt
-            I thought it was...
-          #rating.boxspace
-            = f.hidden_field :rating, id: 'real_rating'
-            %a#bad.box(href='#')
-              = image_tag 'pix.png', class: 'img'
-              %p.text
-                Bad
-            %a#avg.box(href='#')
-              = image_tag 'pix.png', class: 'img'
-              %p.text
-                Okay
-            %a#good.box(href='#')
-              = image_tag 'pix.png', class: 'img'
-              %p.text
-                Good
-          .clear
+          %h2#header2
+            about
+            = @response.category.name
+            = f.hidden_field :category_id
 
-        - if @response.category.get_details?
-          %h3.qtxt
-            I liked...
-          = f.text_area :liked, id: 'details', class: 'boxspace', required: true
-
-          %h3.qtxt
-            I disliked...
-          = f.text_area :disliked, id: 'details', class: 'boxspace', required: true
-
-
-
-
-        %h3.qtxt
-          And I am...
-        .field
-          %button.pure-button#anonbtn(type='button')
-            submitting anonymously
-          = f.hidden_field :anon
-
-      .details
-        %h3
-          or my or details are...
-        %fieldset.pure-group#nameemail
-          = f.text_field :name, placeholder: 'Name'
-          = f.email_field :email, placeholder: 'Email'
-
-      %hr
-
-      %fieldset
-        .actions
           - if @response.errors.any?
-            = f.submit 'Try again', class: 'pure-button pure-button-primary'
-          - else
-            = f.submit 'Let us know', class: 'pure-button pure-button-primary'
+            .pure-u#error_explanation
+              %h3= "Sorry, we found #{pluralize(@response.errors.count, "problem")} with your response:"
+              %ul
+                - @response.errors.full_messages.each do |msg|
+                  %li= msg
+
+          - if @response.category.get_rating?
+            %h3.qtxt
+              I thought it was...
+            #rating.boxspace
+              = f.hidden_field :rating, id: 'real_rating'
+              %a#bad.box(href='#')
+                = image_tag 'pix.png', class: 'img'
+                %p.text
+                  Bad
+              %a#avg.box(href='#')
+                = image_tag 'pix.png', class: 'img'
+                %p.text
+                  Okay
+              %a#good.box(href='#')
+                = image_tag 'pix.png', class: 'img'
+                %p.text
+                  Good
+            .clear
+
+          - if @response.category.get_details?
+            %h3.qtxt
+              I liked...
+            = f.text_area :liked, id: 'details', class: 'boxspace', required: true
+
+            %h3.qtxt
+              I disliked...
+            = f.text_area :disliked, id: 'details', class: 'boxspace', required: true
+
+          %h3.qtxt
+            And I am...
+          .field
+            %button.pure-button#anonbtn(type='button')
+              submitting anonymously
+            = f.hidden_field :anon
+
+        .details
+          %h3
+            or my or details are...
+          %fieldset.pure-group#nameemail
+            = f.text_field :name, placeholder: 'Name'
+            = f.email_field :email, placeholder: 'Email'
+
+        %hr
+
+        %fieldset
+          .actions
+            - if @response.errors.any?
+              = f.submit 'Try again', class: 'pure-button pure-button-primary'
+            - else
+              = f.submit 'Let us know', class: 'pure-button pure-button-primary'

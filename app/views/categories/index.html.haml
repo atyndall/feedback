@@ -11,6 +11,7 @@
       %th URL
       %th Ask for rating
       %th Ask for details
+      %th Disabled
       %th
       %th
       %th
@@ -21,6 +22,7 @@
       %td= link_to "#{@_request.host_with_port}/on/#{category.urlname}", "http://#{@_request.host_with_port}/on/#{category.urlname}"
       %td= category.get_rating
       %td= category.get_details
+      %td= category.disabled
       %td= link_to 'Show', category
       %td= link_to 'Edit', edit_category_path(category)
       %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Deleting a category will delete all feedback associated with it. Are you sure?' }

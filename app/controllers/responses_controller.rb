@@ -30,13 +30,17 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
 
-    respond_to do |format|
-      if @response.save
-        format.html { redirect_to thanks_path }
-        format.json { render action: 'show', status: :created, location: @response }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @response.errors, status: :unprocessable_entity }
+    if @response.category.disabled
+      redirect_to new_response_path(@response.category.urlname)
+    else
+      respond_to do |format|
+        if @response.save
+          format.html { redirect_to thanks_path }
+          format.json { render action: 'show', status: :created, location: @response }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @response.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
